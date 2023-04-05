@@ -1,0 +1,12 @@
+# ignore all .o .a .exe 
+*.o
+*.a
+*.exe
+lp.c
+quanjubianliang.c
+size_compute.c
+Testc.c
+zaxiang.c
+
+
+/.vscode
