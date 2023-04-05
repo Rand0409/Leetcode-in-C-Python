@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include <limits.h>
+#include<math.h>
 
 /*
 
@@ -17,23 +18,25 @@
 
 */
 
-int minArrayLen(int* array, int arraySize, int target){
-    int head = 0, tail = 0, sum = 0, minRet = arraySize;
+int nums[6] = {2,3,1,2,4,3};
 
-    while (tail < arraySize)
-    {
-        sum = sum + array[tail];
-        if (sum >= target)
-        {
-            while ((sum - array[head]) >= target)
-            sum = sum - array[head];
-            head++; 
+int minSubArrayLen(int target, int* nums, int numsSize){
+    int left = 0, right = 0, sum = 0, minLen = INT_MAX;
+    while(right < numsSize){
+        sum += nums[right];
+        right++;
+        while(sum >= target){
+            minLen = fmin(minLen, right - left);
+            sum -= nums[left];
+            left++;
         }
-        if ((tail - head + 1) < minRet)
-        {
-            minRet = tail - head + 1;
-        }
-        tail++;
     }
-    return (sum < target ) ? 0 : minRet;
+    return minLen == INT_MAX ? 0 : minLen;
+}
+
+
+
+int main(){
+    int result = minSubArrayLen(7, nums, 6);
+    printf("%d",result);
 }
