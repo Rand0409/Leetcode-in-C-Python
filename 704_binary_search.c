@@ -46,7 +46,7 @@ int search(int* array, int arraySize, int target){
 
     while (i <= j)
     {
-        k = (i + j) / 2;
+        k = (i + j) / 2;           
         if (array[k] == target) {
             return k;
         }
